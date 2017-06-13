@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -38,6 +38,10 @@ gem 'ancestry'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  gem 'database_cleaner', '~> 1.5.3'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
 end
 
 group :development do
