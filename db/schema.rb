@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613133952) do
+ActiveRecord::Schema.define(version: 20170613141017) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -19,7 +19,25 @@ ActiveRecord::Schema.define(version: 20170613133952) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
     t.index ["title"], name: "index_categories_on_title", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.string   "status",                                             default: "off"
+    t.integer  "amount",                                             default: 0
+    t.string   "uuid"
+    t.decimal  "msrp",                      precision: 10, scale: 2
+    t.decimal  "price",                     precision: 10, scale: 2
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["status", "category_id"], name: "index_products_on_status_and_category_id", using: :btree
+    t.index ["title"], name: "index_products_on_title", using: :btree
+    t.index ["uuid"], name: "index_products_on_uuid", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
