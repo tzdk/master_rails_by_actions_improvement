@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615083625) do
+ActiveRecord::Schema.define(version: 20170615092214) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 20170615083625) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20170615083625) do
     t.string   "uuid"
     t.integer  "default_address_id"
     t.string   "cellphone"
+    t.boolean  "is_admin",                        default: false
     t.index ["activation_token"], name: "index_users_on_activation_token", using: :btree
     t.index ["cellphone"], name: "index_users_on_cellphone", using: :btree
     t.index ["email"], name: "index_users_on_email", using: :btree
