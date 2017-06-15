@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_many :addresses, -> { where(address_type: Address::AddressType::User).order("id desc") }
   belongs_to :default_address, class_name: :Address
   has_many :orders
-  
+  has_many :payments
+
   def username
     self.email.split('@').first
   end
