@@ -5,15 +5,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = login(params[:email], params[:password])
-      update_browser_uuid user.uuid
+    if user = User.find_by_email(params[:email])
+      if user.activation_state != 'active'
+        flash[:warning] = "用户没有激活，不能登录"
+        redirect_to new_session_path
+      elsif user = login(params[:email], params[:password])
+        update_browser_uuid user.uuid
 
-      flash[:notice] = "登陆成功"
-      redirect_to root_path
+        flash[:notice] = "登陆成功"
+        redirect_to root_path
+      else
+        flash[:warning] = "邮箱或者密码不正确"
+        redirect_to new_session_path
+      end
     else
-      flash[:notice] = "邮箱或者密码不正确"
+      flash[:warning] = "用户不存在，请检查"
       redirect_to new_session_path
     end
+
   end
 
   def destroy

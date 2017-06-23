@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 	def activation_needed_email(user)
 	  @user = user
-	  @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
+	  @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
 	  delivery_options = { user_name: 'yefeng_dk@163.com',
                          password: '19830810dk,.',
                          address: 'smtp.163.com' }
