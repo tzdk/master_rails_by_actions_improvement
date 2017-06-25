@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
       elsif user = login(params[:email], params[:password])
         update_browser_uuid user.uuid
 
-        flash[:notice] = "登陆成功"
+        flash[:info] = "登陆成功"
         redirect_to root_path
       else
-        flash[:warning] = "邮箱或者密码不正确"
+        flash[:info] = "邮箱或者密码不正确"
         redirect_to new_session_path
       end
     else
-      flash[:warning] = "用户不存在，请检查"
+      flash[:danger] = "用户不存在，请检查"
       redirect_to new_session_path
     end
 

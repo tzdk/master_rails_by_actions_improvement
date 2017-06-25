@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user.uuid = RandomCode.generate_utoken
     if @user.save
       UserMailer.activation_needed_email @user
-      flash[:notice] = "注册成功，请先激活"
+      flash[:info] = "注册成功，请先激活"
       redirect_to new_session_path
     else
       render action: :new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(new_session_path, :notice => '激活成功，请登录')
+      redirect_to(new_session_path, :info => '激活成功，请登录')
     else
       not_authenticated
     end
