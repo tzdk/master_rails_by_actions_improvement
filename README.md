@@ -20,3 +20,10 @@
   - 分类管理
   - 商品管理（商品图片）
   - 用户管理（管理员设置）
+
+## 本地运行流程
+
+1. Clone到本地
+2. bundle install
+3. 默认使用的mysql数据库
+4. rails s启动服务器端，打开页面：http://localhost:XXXX/
