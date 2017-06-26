@@ -18,3 +18,6 @@
 - 后端管理功能
   - 分类管理
   - 商品管理（商品图片）
+- Ruby
+  - Rails
+    - ActiveRecord
