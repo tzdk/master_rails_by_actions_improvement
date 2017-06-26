@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(new_session_path, :info => '激活成功，请登录')
+      flash[:info] = "激活成功，请登录"
+      redirect_to new_session_path
     else
       not_authenticated
     end
