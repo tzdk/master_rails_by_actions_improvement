@@ -1,0 +1,35 @@
+<div>
+
+
+  <h1>
+    用户(<%= @users.total_entries %>)
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>邮箱</th>
+      <th>UUID/SKU</th>
+      <th>是否是管理员</th>
+
+      <th></th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.uuid %></td>
+        <td><%= user.is_admin ? '是' : '否' %></td>
+        <td align="right">
+          <%= link_to "设为管理员", admin_user_path(user), method: :put %> 
+        </td>
+
+      </tr>
+    <% end -%>
+  </table>
+
+  <%= will_paginate @products %>
+</div>

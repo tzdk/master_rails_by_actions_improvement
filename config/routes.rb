@@ -45,7 +45,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'sessions#new'
+    root 'users#index'
+    resources :users, only:[:index, :update]
     resources :sessions
     resources :categories
     resources :products do
