@@ -30,13 +30,18 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-    @product.attributes = params.require(:product).permit!
     @root_categories = Category.roots
-    if @product.save
-      flash[:notice] = "修改成功"
-      redirect_to admin_products_path
-    else
+    if @product.product_images.count == 0
+      flash[:warning] = "商品没有图片，不能上架"
       render action: :new
+    else
+      @product.attributes = params.require(:product).permit!
+      if @product.save
+        flash[:info] = "修改成功"
+        redirect_to admin_products_path
+      else
+        render action: :new
+      end
     end
   end
 

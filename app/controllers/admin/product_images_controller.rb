@@ -7,11 +7,17 @@ class Admin::ProductImagesController < Admin::BaseController
   end
 
   def create
-    params[:images].each do |image|
-      @product.product_images << ProductImage.new(image: image)
-    end
+    unless (params[:images].nil?)
+      params[:images].each do |image|
+        @product.product_images << ProductImage.new(image: image)
+      end
 
-    redirect_to :back
+      redirect_to :back
+    else
+      flash[:warning] = "没有选中任何图片"
+      redirect_to :back
+    end
+    
   end
 
   def destroy

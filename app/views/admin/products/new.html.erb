@@ -43,7 +43,7 @@
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">上下架状态:*</label>
       <div class="col-sm-5">
-        <select name="product[status]">
+        <select name="product[status]" <%= @product.new_record? ? "disabled='disabled'" : "" %>>
           <% [[Product::Status::On, '上架'], [Product::Status::Off, '下架']].each do |row| %>
             <option value="<%= row.first %>" <%= 'selected' if @product.status == row.first %>><%= row.last %></option>
           <% end -%>

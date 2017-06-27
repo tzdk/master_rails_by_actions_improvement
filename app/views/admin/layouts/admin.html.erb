@@ -12,9 +12,12 @@
   <body>
     <%= render 'admin/layouts/menu' %>
     <div class="container">
-      <% unless flash[:notice].blank? %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+<!--       <% unless flash[:notice].blank? %>
         <div class="alert alert-info"><%= flash[:notice] %></div>
-      <% end -%>
+      <% end -%> -->
       
       <%= yield %>
     </div>
