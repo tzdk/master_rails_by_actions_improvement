@@ -2,6 +2,7 @@
 User.create!(email:  "admin@example.com", password: "112233", 
 							password_confirmation: "112233", activation_state: "active",
 							is_admin: "true")
+User.first.activate!
 
 # Category
 category_1 = Category.create!(title:  "游戏", weight: "20", 
