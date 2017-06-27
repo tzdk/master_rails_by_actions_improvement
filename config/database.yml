@@ -48,6 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: master_rails_by_actions_production
+  adapter: postgresql
+  encoding: unicode
+  database: postgres://XXXXXXXXXX:XXXXXXXXXXXXXXXXXXXX.compute-1.amazonaws.com:5432/XXXXXXX
+  pool: 5
+  timeout: 5000
   
