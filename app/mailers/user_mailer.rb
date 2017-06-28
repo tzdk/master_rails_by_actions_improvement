@@ -4,7 +4,8 @@ class UserMailer < ApplicationMailer
 	  @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
 	  delivery_options = { user_name: 'test_signup_2017@163.com',
                          password: 'sayyou200',
-                         address: 'smtp.163.com' }
+                         address: 'smtp.163.com',
+                         authentication: 'plain' }
 	  mail(to: user.email, subject: 'Welcome to My Awesome Site',delivery_method_options: delivery_options)
 	end
 

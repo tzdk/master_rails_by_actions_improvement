@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       .permit(:email, :password, :password_confirmation, :cellphone, :token))
     @user.uuid = RandomCode.generate_utoken
     if @user.save
-      UserMailer.activation_needed_email @user
+      # UserMailer.activation_needed_email @user
       flash[:info] = "注册成功，请先激活"
       redirect_to new_session_path
     else
