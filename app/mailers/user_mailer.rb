@@ -5,7 +5,8 @@ class UserMailer < ApplicationMailer
 	  delivery_options = { user_name: 'test_signup_2017@163.com',
                          password: 'sayyou200',
                          address: 'smtp.163.com',
-                         authentication: 'plain' }
+                         authentication: 'plain',
+                         enable_starttls_auto: true }
 	  mail(to: user.email, subject: 'Welcome to My Awesome Site',delivery_method_options: delivery_options)
 	end
 
