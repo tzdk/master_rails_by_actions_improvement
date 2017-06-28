@@ -58,6 +58,7 @@ group :development do
 end
 
 group :production do
+  gem 'byebug', platform: :mri
   gem 'pg'
 end
 
