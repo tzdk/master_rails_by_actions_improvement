@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 	def activation_needed_email(user)
 	  @user = user
-	  @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
+	  @url  = "https://jing-bao.herokuapp.com//users/#{user.activation_token}/activate"
 	  delivery_options = { user_name: '529950736@qq.com',
                          password: 'gpnbgniasappbicg',
                          address: 'smtp.qq.com',
