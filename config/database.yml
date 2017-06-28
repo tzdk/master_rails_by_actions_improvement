@@ -50,7 +50,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: postgres://rvptpwuqzuorrm:dd744358c99c11d7b238786c268bf412d4a8517e92cf0913e8a77144ce30a4e1@ec2-107-20-255-96.compute-1.amazonaws.com:5432/dd2t50rje2fg38
+  database: master_rails_by_actions_production
   pool: 5
+  host: localhost
+  username: postgres
+  password: 123456
   timeout: 5000
   
