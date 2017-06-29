@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
         redirect_to new_session_path
       elsif user = login(params[:email], params[:password])
         update_browser_uuid user.uuid
-
         flash[:info] = "登陆成功"
         redirect_to root_path
       else
